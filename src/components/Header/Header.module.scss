@@ -1,0 +1,41 @@
+.main {
+    height: 50px;
+    // background-color: #e5e2e2;
+    // color: rgb(53, 53, 53);
+    // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    h1 {
+        font-size: 20px;
+        text-transform: uppercase;
+        &:hover {
+            cursor: pointer;
+            color: #457a9d;
+}
+    }
+   
+    @media(max-width: 1024px) {
+        &{
+            padding: 0px 20px;
+
+            .main {
+                width: auto
+            }
+        }
+    }
+
+    @media(max-width: 767px) {
+        
+        .main {
+            height: 100%;
+            h1 {
+                font-size: 17px;
+            }
+            p {
+                font-size: 14px
+            }
+        }
+    }
+}
