@@ -2,7 +2,6 @@ import { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
-import Loader from '../Loader/Loader';
 import { getDataCountryInfo } from '../../store/countriesData';
 import { RootState } from '../../store/store';
 import style from './CountryInfo.module.scss';

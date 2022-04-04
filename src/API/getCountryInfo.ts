@@ -10,25 +10,20 @@ export interface ICountryInfo {
   capital: string,
   flag: string,
   area: number,
-  currencies: [
-    {
-      name: string
-    },
-    {
-      code: string
-    }
-  ],
-  languages: [
-    {
-      name: string
-    },
-    {
-      iso639_1: string
-    }
-  ],
-  borders: [
-    string
-  ]
+  currencies:
+  {
+    code: string
+    name: string
+  }[],
+  languages:
+  {
+    iso639_1: string
+    name: string
+  }[],
+
+  borders:
+  string[]
+
 }
 
 const getCountryInfo = async (countryCode: string): Promise<ICountryInfo> => {

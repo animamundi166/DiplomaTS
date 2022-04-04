@@ -5,7 +5,6 @@ import CountryItem from '../CountryItem/CountryItem';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
 import { getDataCurrencyInfo } from '../../store/countriesData';
-import Loader from '../Loader/Loader';
 import { RootState } from '../../store/store';
 import MapSwitcher from '../MapSwitcher/MapSwitcher';
 import MapChartFilled from '../MapCharts/MapChartFilled';
@@ -22,11 +21,15 @@ const CurrencyInfo: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getArrayForChart = () => {
+  interface INewObj {
+    [key: string]: string;
+  }
+
+  const getArrayForChart = (): INewObj[] => {
     const currencies = currencyInfo.map(item => item.cca3);
-    const newObj = [];
+    const newObj: INewObj[] = [];
     currencies.forEach(element => {
-      const x = {
+      const x: INewObj = {
         ISO3: element,
       };
       newObj.push(x);

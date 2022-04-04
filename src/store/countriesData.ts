@@ -16,7 +16,7 @@ export const getDataCurrencyInfo = createAsyncThunk('getDataCurrencyInfo', (curr
 });
 
 interface ICountriesDataState {
-  countryInfo: ICountryInfo,
+  countryInfo: ICountryInfo | null,
   languageInfo: ILanguageInfo[],
   currencyInfo: ICurrencyInfo[],
   isLoading: boolean,

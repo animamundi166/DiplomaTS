@@ -1,16 +1,20 @@
 import { FC, memo } from "react";
 import { geoUrl } from "../../util/api";
+import { INewObj } from "../LanguageInfo/LanguageInfo";
 import {
   ComposableMap,
   Geographies,
   Geography,
 } from "react-simple-maps";
 
+interface IDataProps {
+  data: INewObj[],
+}
 
-const MapChartFilled: FC = ({ data }) => {
+const MapChartFilled: FC<IDataProps> = ({ data }) => {
 
   return (
-    <ComposableMap projectionConfig={{ scale: 100 }} width={700} height={450}>
+    <ComposableMap projectionConfig={{ scale: 130 }} width={700} height={450}>
 
       {data.length > 0 && (
         <Geographies geography={geoUrl}>

@@ -8,7 +8,7 @@ export const Header: FC = () => {
     return (
         <div className={style.main}>
             <h1 onClick={() => navigate('/')}>Countries</h1>
-            <p>Feature</p>
+            {/* <p>Feature</p> */}
         </div >
     )
 }

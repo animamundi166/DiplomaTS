@@ -2,7 +2,15 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom';
 import style from './CountryItem.module.scss';
 
-const CountryItem: FC = ({ name, population, capital, flag, code }) => {
+interface ICountryItemProps {
+  name: string,
+  population: number,
+  capital: string,
+  flag: string,
+  code: string
+}
+
+const CountryItem: FC<ICountryItemProps> = ({ name, population, capital, flag, code }) => {
 
   return (
     <div className={style.main}>
