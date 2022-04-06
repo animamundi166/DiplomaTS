@@ -13,7 +13,7 @@ interface ICountryItemProps {
 const CountryItem: FC<ICountryItemProps> = ({ name, population, capital, flag, code }) => {
 
   return (
-    <div className={style.main}>
+    <main className={style.main}>
       <Link to={`/country/${code}`}>
         <div className={style.image}>
           <img src={flag} alt={`Flag of: ${name}`} />
@@ -21,10 +21,10 @@ const CountryItem: FC<ICountryItemProps> = ({ name, population, capital, flag, c
         <div className={style.data}>
           <p className={style.name}>{name}</p>
           <p>Capital: <span>{capital}</span></p>
-          <p>Population: <span>{Intl.NumberFormat().format(population)}</span></p>
+          <p>Population: <span>{population.toLocaleString()}</span></p>
         </div>
       </Link>
-    </div>
+    </main>
   )
 }
 

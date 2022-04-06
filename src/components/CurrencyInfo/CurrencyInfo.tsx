@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom';
 import style from './CurrencyInfo.module.scss';
 import CountryItem from '../CountryItem/CountryItem';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from '../Header/Header';
 import { getDataCurrencyInfo } from '../../store/countriesData';
 import { RootState } from '../../store/store';
 import MapSwitcher from '../MapSwitcher/MapSwitcher';
 import MapChartFilled from '../MapCharts/MapChartFilled';
 import { LinearProgress } from '@mui/material';
+import NoData from '../NoData/NoData';
 
 const CurrencyInfo: FC = () => {
   const { currency } = useParams();
@@ -39,13 +39,11 @@ const CurrencyInfo: FC = () => {
 
   return (
     <>
-      <Header />
       {isLoading && <LinearProgress />}
-      {isWarning && 'No Data'}
-      {!currencyInfo && 'Not Found'}
-      <div className={style.main}>
-        {/* <span>Countries with {currencyInfo.currency.name}</span> */}
+      {isWarning && <NoData />}
+      <main className={style.main}>
         {isWarning || <MapSwitcher />}
+
         {!isChart && <div className={style.countries}>
           {currencyInfo.map((item) => (
             <CountryItem
@@ -60,7 +58,7 @@ const CurrencyInfo: FC = () => {
           }
         </div>}
         {isChart && <MapChartFilled data={getArrayForChart()} />}
-      </div>
+      </main>
     </>
   )
 }

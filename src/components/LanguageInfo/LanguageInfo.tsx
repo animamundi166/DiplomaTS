@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import style from './LanguageInfo.module.scss';
 import CountryItem from '../CountryItem/CountryItem';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from '../Header/Header';
 import { getDataLanguageInfo } from '../../store/countriesData';
 import { RootState } from '../../store/store';
 import MapSwitcher from '../MapSwitcher/MapSwitcher';
 import MapChartFilled from '../MapCharts/MapChartFilled';
 import { LinearProgress } from '@mui/material';
+import NoData from '../NoData/NoData';
+import NotFound from '../NotFound/NotFound';
 
 export interface INewObj {
   [key: string]: string;
@@ -39,10 +40,9 @@ const LanguageInfo: FC = () => {
 
   return (
     <>
-      <Header />
       {isLoading && <LinearProgress />}
-      {isWarning && 'No Data'}
-      {!languageInfo && 'Not Found'}
+      {isWarning && <NoData />}
+      {!languageInfo && <NotFound />}
       <div className={style.main}>
         {isWarning || <MapSwitcher />}
         {!isChart && <div className={style.countries}>
