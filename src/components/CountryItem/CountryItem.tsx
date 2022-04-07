@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import style from './CountryItem.module.scss';
 
 interface ICountryItemProps {
+  key: string,
   name: string,
   population: number,
   capital: string,

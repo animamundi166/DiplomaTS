@@ -9,17 +9,20 @@ import MapSwitcher from '../MapSwitcher/MapSwitcher';
 import MapChartFilled from '../MapCharts/MapChartFilled';
 import { LinearProgress } from '@mui/material';
 import NoData from '../NoData/NoData';
+import { inputData } from '../../store/filterSlice';
+import { cc } from '../../util/constants';
 
 const CurrencyInfo: FC = () => {
-  const { currency } = useParams();
+  const { curr } = useParams();
   const { isChart } = useSelector((store: RootState) => store.dataChart);
   const { isWarning, isLoading, currencyInfo } = useSelector((store: RootState) => store.countriesData);
+  const inputedData = useSelector(inputData);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDataCurrencyInfo(currency!));
+    dispatch(getDataCurrencyInfo(curr!));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [curr]);
 
   interface INewObj {
     [key: string]: string;
@@ -37,24 +40,27 @@ const CurrencyInfo: FC = () => {
     return newObj;
   }
 
+  const currencyFullName = cc.code(curr).currency;
+
   return (
     <>
       {isLoading && <LinearProgress />}
       {isWarning && <NoData />}
       <main className={style.main}>
-        {isWarning || <MapSwitcher />}
-
+        {isWarning || <MapSwitcher name={currencyFullName} />}
         {!isChart && <div className={style.countries}>
-          {currencyInfo.map((item) => (
-            <CountryItem
-              key={item.ccn3}
-              code={item.cca2}
-              name={item.name.common}
-              population={item.population}
-              capital={item.capital}
-              flag={item.flags.png}
-            />
-          ))
+          {currencyInfo
+            .filter((item) => item.name.common.toLowerCase().includes(inputedData.toLowerCase()))
+            .map((item) => (
+              <CountryItem
+                key={item.ccn3}
+                code={item.cca2}
+                name={item.name.common}
+                population={item.population}
+                capital={item.capital}
+                flag={item.flags.png}
+              />
+            ))
           }
         </div>}
         {isChart && <MapChartFilled data={getArrayForChart()} />}

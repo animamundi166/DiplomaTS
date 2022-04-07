@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiURLv3 } from "../util/api";
+import { apiURLv3 } from "../util/constants";
 
 export interface ICurrencyInfo {
   ccn3: string,
@@ -10,6 +10,11 @@ export interface ICurrencyInfo {
   },
   population: number,
   capital: string,
+  currencies: {
+    [key: string]: {
+      name: string
+    };
+  }
   flags: {
     png: string
   }

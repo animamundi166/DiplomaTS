@@ -1,7 +1,7 @@
 import { FC, memo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import { geoUrl } from "../../util/api";
+import { geoUrl } from "../../util/constants";
 import {
   ZoomableGroup,
   ComposableMap,

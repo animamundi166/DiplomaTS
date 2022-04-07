@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiURLv2 } from "../util/api";
+import { apiURLv2 } from "../util/constants";
 
 export interface ILanguageInfo {
   alpha2Code: string,
@@ -9,6 +9,11 @@ export interface ILanguageInfo {
   capital: string,
   flags: {
     png: string
+  }
+  languages:
+  {
+    iso639_2: string
+    name: string
   }
 }
 

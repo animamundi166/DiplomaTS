@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { geoUrl } from "../../util/api";
+import { geoUrl } from "../../util/constants";
 import { INewObj } from "../LanguageInfo/LanguageInfo";
 import {
   ComposableMap,

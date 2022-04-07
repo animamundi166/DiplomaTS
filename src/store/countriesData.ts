@@ -11,8 +11,8 @@ export const getDataLanguageInfo = createAsyncThunk('getDataLanguageInfo', (lang
   return getLanguageInfo(langCode);
 });
 
-export const getDataCurrencyInfo = createAsyncThunk('getDataCurrencyInfo', (currency: string) => {
-  return getCurrencyInfo(currency);
+export const getDataCurrencyInfo = createAsyncThunk('getDataCurrencyInfo', (curr: string) => {
+  return getCurrencyInfo(curr);
 });
 
 interface ICountriesDataState {

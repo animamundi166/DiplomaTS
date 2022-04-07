@@ -10,6 +10,9 @@ import MapChartFilled from '../MapCharts/MapChartFilled';
 import { LinearProgress } from '@mui/material';
 import NoData from '../NoData/NoData';
 import NotFound from '../NotFound/NotFound';
+import { inputData } from '../../store/filterSlice';
+import { livingISO6392 } from '../../util/constants';
+
 
 export interface INewObj {
   [key: string]: string;
@@ -19,12 +22,13 @@ const LanguageInfo: FC = () => {
   const { langCode } = useParams();
   const { isChart } = useSelector((store: RootState) => store.dataChart);
   const { isWarning, isLoading, languageInfo } = useSelector((store: RootState) => store.countriesData);
+  const inputedData = useSelector(inputData);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDataLanguageInfo(langCode!));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [langCode]);
 
   const getArrayForChart = (): INewObj[] => {
     const langs = languageInfo.map(item => item.alpha3Code);
@@ -38,25 +42,31 @@ const LanguageInfo: FC = () => {
     return newObj;
   }
 
+  const LanguageFullName = livingISO6392[langCode!];
+
+
   return (
     <>
       {isLoading && <LinearProgress />}
       {isWarning && <NoData />}
       {!languageInfo && <NotFound />}
       <div className={style.main}>
-        {isWarning || <MapSwitcher />}
+        {isWarning || <MapSwitcher name={LanguageFullName} />}
         {!isChart && <div className={style.countries}>
           {!languageInfo && 'Not Found'}
-          {languageInfo.map((item) => (
-            <CountryItem
-              key={item.alpha2Code}
-              code={item.alpha3Code}
-              name={item.name}
-              population={item.population}
-              capital={item.capital}
-              flag={item.flags.png}
-            />
-          ))}
+          {languageInfo
+            .filter((item) => item.name.toLowerCase().includes(inputedData.toLowerCase()))
+            .map((item) => (
+              <CountryItem
+                key={item.alpha2Code}
+                code={item.alpha3Code}
+                name={item.name}
+                population={item.population}
+                capital={item.capital}
+                flag={item.flags.png}
+              />
+            ))
+          }
         </div>}
         {isChart && <MapChartFilled data={getArrayForChart()} />}
       </div>

@@ -1,70 +1,65 @@
-.countryInfoBlock {
+.main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 100px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 50px;
 
-    .main {
+    img {
+        width: 440px;
+        box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.2);
+    }
+
+    .data {
         display: flex;
-        align-items: flex-start;
+        flex-direction: column;
         justify-content: center;
-        gap: 100px;
-        margin-top: 50px;
 
-        img {
-            width: 440px;
+        a {
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 300;
             box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            padding: 2px 15px;
+            margin: 0 5px;
         }
 
-        .data {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .info {
+            margin-top: 20px;
 
-            a {
-                text-align: center;
-                cursor: pointer;
-                font-size: 14px;
-                font-weight: 300;
-                box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.2);
-                text-decoration: none;
-                padding: 2px 15px;
-                margin: 0 5px;
-            }
+            p {
+                margin: 10px 0px;
 
-            .info {
-                margin-top: 20px;
-
-                p {
-                    margin: 10px 0px;
-
-                    span {
-                        font-weight: bold;
-                    }
-                }
-            }
-
-            .border {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-gap: 5px;
-                width: 100%;
-            }
-
-            .borders {
-                p {
+                span {
                     font-weight: bold;
-                    margin: 10px 0;
                 }
+            }
+        }
+
+        .border {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+            width: 100%;
+        }
+
+        .borders {
+            p {
+                font-weight: bold;
+                margin: 10px 0;
             }
         }
     }
 }
 
+// }
+
 .button {
     text-align: center;
     width: 66px;
-    margin-right: auto;
+    // margin-right: auto;
     cursor: pointer;
     font-size: 16px;
     font-weight: 300;

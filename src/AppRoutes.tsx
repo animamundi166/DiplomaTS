@@ -14,7 +14,7 @@ const AppRoutes: FC = () => {
         <Route index element={<App />} />
         <Route path="country/:countryCode" element={<CountryInfo />} />
         <Route path="languages/:langCode" element={<LanguageInfo />} />
-        <Route path="currencies/:currency" element={<CurrencyInfo />} />
+        <Route path="currencies/:curr" element={<CurrencyInfo />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

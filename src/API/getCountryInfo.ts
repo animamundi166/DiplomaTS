@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiURLv2 } from "../util/api";
+import { apiURLv2 } from "../util/constants";
 
 export interface ICountryInfo {
   name: string,
@@ -17,10 +17,9 @@ export interface ICountryInfo {
   }[],
   languages:
   {
-    iso639_1: string
+    iso639_2: string
     name: string
   }[],
-
   borders:
   string[]
 
