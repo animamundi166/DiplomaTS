@@ -2,9 +2,9 @@ import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "./App";
 import CountryInfo from "./components/CountryInfo/CountryInfo";
-import CurrencyInfo from "./components/CurrencyInfo/CurrencyInfo";
+import CurrencyInfo from "./components/Info/CurrencyInfo";
+import LanguageInfo from "./components/Info/LanguageInfo";
 import Header from "./components/Header/Header";
-import LanguageInfo from "./components/LanguageInfo/LanguageInfo";
 import NotFound from "./components/NotFound/NotFound";
 
 const AppRoutes: FC = () => {

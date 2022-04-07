@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { geoUrl } from "../../util/constants";
-import { INewObj } from "../LanguageInfo/LanguageInfo";
+import { INewObj } from "../Info/LanguageInfo";
 import {
   ComposableMap,
   Geographies,

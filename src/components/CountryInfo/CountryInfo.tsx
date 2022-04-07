@@ -44,7 +44,7 @@ const CountryInfo: FC = () => {
 
               {countryInfo.languages &&
                 <div>
-                  <p className={style.links}><span>Languages: </span>
+                  <p><span>Languages: </span>
                     {countryInfo.languages.map((item, index) =>
                       <Link to={`/languages/${item.iso639_2}`} key={index}>{item.name}</Link>)}
                   </p>
@@ -71,7 +71,6 @@ const CountryInfo: FC = () => {
             }
           </div>
         </main>
-        // </div>
       )}
     </>
   )

@@ -4,6 +4,7 @@ import { isChartFalse, isChartTrue } from '../../store/dataChart';
 import { RootState } from '../../store/store';
 import { activeClass1, activeClass2 } from '../../store/tabState';
 import SearchInput from '../SearchInput/SearchInput';
+import RangeSlider from '../Slider/Slider';
 import style from './MapSwitcher.module.scss';
 
 interface INameProps {
@@ -28,7 +29,8 @@ const MapSwitcher: FC<INameProps> = ({ name }) => {
   return (
     <div className={style.main}>
       <SearchInput />
-      <div className={style.multiButton}>
+      {/* <RangeSlider /> */}
+      <div className={style.switch}>
         <span className={activeClass === 1 ? style.active : style.span} onClick={setChartTrue}>
           List Of Countries ({name})
         </span>
