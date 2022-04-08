@@ -11,6 +11,7 @@ import { LinearProgress } from '@mui/material';
 import NoData from '../NoData/NoData';
 import { inputData } from '../../store/filterSlice';
 import { cc } from '../../util/constants';
+import NotFound from '../NotFound/NotFound';
 
 const CurrencyInfo: FC = () => {
   const { curr } = useParams();
@@ -46,6 +47,7 @@ const CurrencyInfo: FC = () => {
     <>
       {isLoading && <LinearProgress />}
       {isWarning && <NoData />}
+      {!currencyInfo && <NotFound />}
       <main className={style.main}>
         {isWarning || <MapSwitcher name={currencyFullName} />}
         {!isChart && <div className={style.countries}>

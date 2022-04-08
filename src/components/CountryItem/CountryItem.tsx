@@ -21,7 +21,7 @@ const CountryItem: FC<ICountryItemProps> = ({ name, population, capital, flag, c
         </div>
         <div className={style.data}>
           <p className={style.name}>{name}</p>
-          <p>Capital: <span>{capital}</span></p>
+          <p>Capital: <span>{capital ? capital : '-'}</span></p>
           <p>Population: <span>{population.toLocaleString()}</span></p>
         </div>
       </Link>

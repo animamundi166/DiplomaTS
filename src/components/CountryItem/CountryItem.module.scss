@@ -1,9 +1,11 @@
 .main {
     box-shadow: 2px 2px 1em rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+
     a {
         text-decoration: none;
     }
+
     .image {
         img {
             width: 100%;
@@ -12,19 +14,77 @@
             border-top-right-radius: 4px;
         }
     }
+
     .data {
         padding: 10px 20px;
+
         p {
             font-size: 14px;
             font-weight: 500;
             margin: 10px 0px;
+
             span {
                 font-weight: 300;
             }
         }
+
         .name {
             font-size: 18px;
             margin: 10px 0px;
+        }
+    }
+}
+
+@media(min-width: 1024px) and (max-width: 1200px) {
+    .main {
+        .data {
+            padding: 8px 20px;
+
+            p {
+                font-size: 13px;
+                margin: 4px 0px;
+            }
+
+            .name {
+                font-size: 17px;
+                margin: 9px 0px;
+            }
+        }
+    }
+}
+
+@media(min-width: 768px) and (max-width: 1024px) {
+    .main {
+        .data {
+            padding: 6px 20px;
+
+            p {
+                font-size: 12px;
+                margin: 3px 0px;
+            }
+
+            .name {
+                font-size: 16px;
+                margin: 8px 0px;
+            }
+        }
+    }
+}
+
+@media(min-width: 480px) and (max-width: 768px) {
+    .main {
+        .data {
+            padding: 4px 20px 8px;
+
+            p {
+                font-size: 11px;
+                margin: 3px 0px;
+            }
+
+            .name {
+                font-size: 16px;
+                margin: 6px 0px;
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ const CountryInfo: FC = () => {
               <p><span>Subregion: </span>{countryInfo.subregion}</p>
               <p><span>Population: </span>{(countryInfo.population).toLocaleString()}</p>
               {countryInfo.area && <p><span>Area: </span>{(countryInfo.area).toLocaleString()}</p>}
-              {countryInfo.capital && <p><span>Capital: </span>{countryInfo.capital}</p>}
+              {countryInfo.capital ? (<p><span>Capital: </span>{countryInfo.capital}</p>) : (<p><span>Capital: </span>-</p>)}
 
               {countryInfo.currencies &&
                 <p><span>Currencies: </span>
@@ -43,11 +43,12 @@ const CountryInfo: FC = () => {
                 </p>}
 
               {countryInfo.languages &&
-                <div>
-                  <p><span>Languages: </span>
+                <div className={style.penum}>
+                  <p><span>Languages: </span></p>
+                  <span className={style.enum}>
                     {countryInfo.languages.map((item, index) =>
-                      <Link to={`/languages/${item.iso639_2}`} key={index}>{item.name}</Link>)}
-                  </p>
+                      <Link to={`/languages/${item.iso639_2}`} key={index}>{item.name}</Link>)}</span>
+
                 </div>}
 
             </div>

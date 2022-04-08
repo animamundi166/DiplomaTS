@@ -1,16 +1,16 @@
 import { FC } from "react"
 import { useNavigate } from "react-router-dom";
-import NotFoundImgSrc from "./1.png";
-import styles from "./NotFound.module.scss";
+import NotFoundImgSrc from "./NotFound.png";
+import style from "./NotFound.module.scss";
 
 const NotFound: FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.container}>
-      <img src={NotFoundImgSrc} alt="Not Found" />
-      <p className={styles.title}>Not Found</p>
-      <button className={styles.button} onClick={() => navigate('/')} >Back to Home</button>
+    <div className={style.container}>
+      <img className={style.image} src={NotFoundImgSrc} alt="Not Found" />
+      <p className={style.title}>Not Found</p>
+      <button className={style.button} onClick={() => navigate('/')} >Back to Home</button>
     </div>
   )
 }

@@ -3,27 +3,81 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 30px 30px;
+
+  .image {
+    width: 600px;
+  }
+
+  .title {
+    font-size: 44px;
+    padding-bottom: 30px;
+  }
+
+  .button {
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 300;
+    box-shadow: 1px 1px 14px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    padding: 12px 15px;
+    margin: 0 5px;
+    outline: none;
+    border: none;
+
+    &:hover {
+      box-shadow: 1px 1px 14px rgba(0, 0, 0, 0.3);
+
+    }
+  }
 }
 
-.title {
-  font-size: 44px;
-  padding-bottom: 30px;
+@media(min-width: 768px) and (max-width: 1200px) {
+  .container {
+    .title {
+      font-size: 40px;
+      padding-bottom: 25px;
+    }
+
+    .button {
+      font-size: 15px;
+    }
+  }
 }
 
-.button {
-  text-align: center;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 300;
-  box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  padding: 12px 15px;
-  margin: 0 5px;
-  outline: none;
-  border: none;
+@media(min-width: 480px) and (max-width: 768px) {
+  .container {
 
-  &:hover {
-    box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.3);
+    .image {
+      width: 400px;
+    }
 
+    .title {
+      font-size: 38px;
+      padding-bottom: 22px;
+    }
+
+    .button {
+      font-size: 14px;
+    }
+  }
+}
+
+@media(min-width: 320px) and (max-width: 480px) {
+  .container {
+
+    .image {
+      width: 350px;
+    }
+
+    .title {
+      font-size: 36px;
+      padding-bottom: 20px;
+    }
+
+    .button {
+      font-size: 14px;
+    }
   }
 }

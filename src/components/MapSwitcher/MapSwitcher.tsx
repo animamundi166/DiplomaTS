@@ -29,7 +29,7 @@ const MapSwitcher: FC<INameProps> = ({ name }) => {
   return (
     <div className={style.main}>
       <SearchInput />
-      {/* <RangeSlider /> */}
+      <RangeSlider />
       <div className={style.switch}>
         <span className={activeClass === 1 ? style.active : style.span} onClick={setChartTrue}>
           List Of Countries ({name})

@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { useNavigate } from "react-router-dom";
-import NotFoundImgSrc from "./1.jpg";
+import NotFoundImgSrc from "./NoData.jpg";
 import styles from "./NoData.module.scss";
 
 const NoData: FC = () => {

@@ -4,6 +4,7 @@ import countriesReducer from "./countriesData";
 import chartReducer from "./dataChart";
 import tabReducer from "./tabState";
 import filterSlice from './filterSlice';
+import populationSlice from "./populationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     tabState: tabReducer,
     countriesData: countriesReducer,
     inputData: filterSlice,
+    populationData: populationSlice,
   }
 });
 
