@@ -8,11 +8,11 @@ import { RootState } from '../../store/store';
 import MapSwitcher from '../MapSwitcher/MapSwitcher';
 import MapChartFilled from '../MapCharts/MapChartFilled';
 import { LinearProgress } from '@mui/material';
-import NoData from '../NoData/NoData';
+import NoData from '../NotFound/NoData';
 import NotFound from '../NotFound/NotFound';
 import { inputData } from '../../store/filterSlice';
 import { livingISO6392 } from '../../util/constants';
-import { filteredPopulationData, setPopul } from '../../store/populationSlice';
+import { filteredPopulationData, setFilteredPopul } from '../../store/populationSlice';
 
 
 export interface INewObj {
@@ -27,18 +27,11 @@ const LanguageInfo: FC = () => {
   const inputedData = useSelector(inputData);
   const filteredPopulData = useSelector(filteredPopulationData);
 
-  console.log(filteredPopulData);
-
-
   useEffect(() => {
     dispatch(getDataLanguageInfo(langCode!));
+    dispatch(setFilteredPopul([0, 2000000000]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [langCode]);
-
-  useEffect(() => {
-    dispatch(setPopul(findPopulationValues()));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [languageInfo]);
 
   const getArrayForChart = (): INewObj[] => {
     const langs = languageInfo.map(item => item.alpha3Code);
@@ -52,13 +45,6 @@ const LanguageInfo: FC = () => {
     return newObj;
   }
 
-  const findPopulationValues = () => {
-    const popul = languageInfo.map(item => item.population);
-    const maxPopul = Math.max(...popul);
-    const minPopul = Math.min(...popul);
-    return ([minPopul, maxPopul])
-  }
-
   const LanguageFullName = livingISO6392[langCode!];
 
   return (
@@ -67,7 +53,7 @@ const LanguageInfo: FC = () => {
       {isWarning && <NoData />}
       {!languageInfo && <NotFound />}
       <div className={style.main}>
-        {isWarning || <MapSwitcher name={LanguageFullName} />}
+        <MapSwitcher name={LanguageFullName} />
         {!isChart && <div className={style.countries}>
           {languageInfo
             .filter((item) => item.name.toLowerCase().includes(inputedData.toLowerCase().trim()))

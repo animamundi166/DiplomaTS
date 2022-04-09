@@ -5,7 +5,7 @@ import { getDataCountryInfo } from '../../store/countriesData';
 import { RootState } from '../../store/store';
 import style from './CountryInfo.module.scss';
 import { LinearProgress } from '@mui/material';
-import NoData from '../NoData/NoData';
+import NoData from '../NotFound/NoData';
 
 const CountryInfo: FC = () => {
   const { countryCode } = useParams();

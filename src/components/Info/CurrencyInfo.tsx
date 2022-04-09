@@ -8,7 +8,7 @@ import { RootState } from '../../store/store';
 import MapSwitcher from '../MapSwitcher/MapSwitcher';
 import MapChartFilled from '../MapCharts/MapChartFilled';
 import { LinearProgress } from '@mui/material';
-import NoData from '../NoData/NoData';
+import NoData from '../NotFound/NoData';
 import { inputData } from '../../store/filterSlice';
 import { cc } from '../../util/constants';
 import NotFound from '../NotFound/NotFound';
@@ -49,7 +49,7 @@ const CurrencyInfo: FC = () => {
       {isWarning && <NoData />}
       {!currencyInfo && <NotFound />}
       <main className={style.main}>
-        {isWarning || <MapSwitcher name={currencyFullName} />}
+        < MapSwitcher name={currencyFullName} />
         {!isChart && <div className={style.countries}>
           {currencyInfo
             .filter((item) => item.name.common.toLowerCase().includes(inputedData.toLowerCase()))
