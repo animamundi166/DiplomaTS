@@ -9,36 +9,51 @@ import MapSwitcher from '../MapSwitcher/MapSwitcher';
 import MapChartFilled from '../MapCharts/MapChartFilled';
 import { LinearProgress } from '@mui/material';
 import NoData from '../NotFound/NoData';
-import { inputData } from '../../store/filterSlice';
+import { inputData, setFilter } from '../../store/filterSlice';
 import { cc } from '../../util/constants';
 import NotFound from '../NotFound/NotFound';
+import { filteredPopulationRange, setFilteredPopul, setMinMaxPopulationValues } from '../../store/populationSlice';
+import { INewObj } from './LanguageInfo';
+
 
 const CurrencyInfo: FC = () => {
   const { curr } = useParams();
-  const { isChart } = useSelector((store: RootState) => store.dataChart);
+  const dispatch = useDispatch();
+  const { isChart } = useSelector((store: RootState) => store.showChart);
   const { isWarning, isLoading, currencyInfo } = useSelector((store: RootState) => store.countriesData);
   const inputedData = useSelector(inputData);
-  const dispatch = useDispatch();
+  const filteredPopulData = useSelector(filteredPopulationRange);
 
   useEffect(() => {
     dispatch(getDataCurrencyInfo(curr!));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [curr]);
 
-  interface INewObj {
-    [key: string]: string;
-  }
+  useEffect(() => {
+    dispatch(setFilteredPopul([0, 2e9]));
+    dispatch(setMinMaxPopulationValues(findMinMaxPopulationValues()));
+    dispatch(setFilter(''));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currencyInfo]);
 
   const getArrayForChart = (): INewObj[] => {
-    const currencies = currencyInfo.map(item => item.cca3);
+    const arr = currencyInfo.map(item => [item.cca3, item.name.common, item.population]);
     const newObj: INewObj[] = [];
-    currencies.forEach(element => {
+    arr.forEach(element => {
       const x: INewObj = {
-        ISO3: element,
+        ISO3: element[0],
+        name: element[1],
+        population: element[2],
       };
       newObj.push(x);
     })
     return newObj;
+  }
+
+  const findMinMaxPopulationValues = () => {
+    const popul = currencyInfo.map(item => item.population);
+    const maxPopul = Math.max(...popul);
+    return ([0, maxPopul])
   }
 
   const currencyFullName = cc.code(curr).currency;
@@ -53,9 +68,10 @@ const CurrencyInfo: FC = () => {
         {!isChart && <div className={style.countries}>
           {currencyInfo
             .filter((item) => item.name.common.toLowerCase().includes(inputedData.toLowerCase()))
+            .filter((item) => item.population >= filteredPopulData[0] && item.population <= filteredPopulData[1])
             .map((item) => (
               <CountryItem
-                key={item.ccn3}
+                key={item.cca3}
                 code={item.cca2}
                 name={item.name.common}
                 population={item.population}

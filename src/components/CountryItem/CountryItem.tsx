@@ -14,7 +14,7 @@ interface ICountryItemProps {
 const CountryItem: FC<ICountryItemProps> = ({ name, population, capital, flag, code }) => {
 
   return (
-    <main className={style.main}>
+    <div className={style.main}>
       <Link to={`/country/${code}`}>
         <div className={style.image}>
           <img src={flag} alt={`Flag of: ${name}`} />
@@ -25,7 +25,7 @@ const CountryItem: FC<ICountryItemProps> = ({ name, population, capital, flag, c
           <p>Population: <span>{population.toLocaleString()}</span></p>
         </div>
       </Link>
-    </main>
+    </div>
   )
 }
 

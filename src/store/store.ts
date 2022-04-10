@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import countriesReducer from "./countriesData";
-import chartReducer from "./dataChart";
+import chartReducer from "./showChart";
 import tabReducer from "./tabState";
 import filterSlice from './filterSlice';
 import populationSlice from "./populationSlice";
 
 export const store = configureStore({
   reducer: {
-    dataChart: chartReducer,
+    showChart: chartReducer,
     tabState: tabReducer,
     countriesData: countriesReducer,
     inputData: filterSlice,

@@ -1,6 +1,28 @@
 .main {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    margin: 0 40px;
+    width: 150%;
+
+}
+
+// @media(min-width: 1264px) and (max-width: 1400px) {
+//     .main {
+//         width: 150%;
+//     }
+// }
+
+// @media(min-width: 768px) and (max-width: 1264px) {
+//     .main {
+//         width: 60%;
+//     }
+// }
+
+@media(min-width: 480px) and (max-width: 768px) {
+    .main {
+        width: 85%;
+    }
+}
+
+@media(max-width: 480px) {
+    .main {
+        width: 85%;
+    }
 }

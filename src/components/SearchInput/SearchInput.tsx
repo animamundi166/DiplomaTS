@@ -1,10 +1,11 @@
 import { ChangeEvent, FC } from "react";
-import { useDispatch } from "react-redux";
-import { setFilter } from "../../store/filterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { inputData, setFilter } from "../../store/filterSlice";
 import style from './SearchInput.module.scss';
 
 const SearchInput: FC = () => {
   const dispatch = useDispatch();
+  const inputedData = useSelector(inputData);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setFilter(e.target.value));
@@ -12,7 +13,7 @@ const SearchInput: FC = () => {
 
   return (
     <div className={style.main}>
-      <input type="text" placeholder="Search" onChange={handleChange} />
+      <input type="text" placeholder="Search" onChange={handleChange} value={inputedData} />
     </div>
   )
 }

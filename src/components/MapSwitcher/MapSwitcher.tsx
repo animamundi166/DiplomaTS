@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { isChartFalse, isChartTrue } from '../../store/dataChart';
+import { isChartFalse, isChartTrue } from '../../store/showChart';
 import { RootState } from '../../store/store';
 import { activeClass1, activeClass2 } from '../../store/tabState';
 import SearchInput from '../SearchInput/SearchInput';
@@ -26,7 +26,6 @@ const MapSwitcher: FC<INameProps> = ({ name }) => {
   const setChartFalse = () => {
     dispatch(activeClass2());
     dispatch(isChartTrue());
-    setShownFilter(false);
   }
 
   const showFilter = () => {

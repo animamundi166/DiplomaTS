@@ -6,22 +6,30 @@ import {
   Geographies,
   Geography,
 } from "react-simple-maps";
+import { useSelector } from "react-redux";
+import { inputData } from "../../store/filterSlice";
+import { filteredPopulationRange } from "../../store/populationSlice";
 
 interface IDataProps {
   data: INewObj[],
 }
 
 const MapChartFilled: FC<IDataProps> = ({ data }) => {
+  const inputedData = useSelector(inputData);
+  const filteredPopulData = useSelector(filteredPopulationRange);
 
   return (
-    <ComposableMap projectionConfig={{ scale: 130 }} width={700} height={450}>
+    <ComposableMap projectionConfig={{ scale: 130 }} width={700} height={420}>
 
       {data.length > 0 && (
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => {
               const { ISO_A3 } = geo.properties;
-              const filledCountries = data.find(item => item.ISO3 === ISO_A3);
+              const filledCountries = data
+                .filter((item) => item.name.toString().toLowerCase().includes(inputedData.toLowerCase().trim()))
+                .filter((item) => item.population >= filteredPopulData[0] && item.population <= filteredPopulData[1])
+                .find(item => item.ISO3 === ISO_A3);
               return (
                 <Geography
                   key={geo.rsmKey}
