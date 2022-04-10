@@ -7,13 +7,17 @@ const SearchInput: FC = () => {
   const dispatch = useDispatch();
   const inputedData = useSelector(inputData);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch(setFilter(e.target.value));
   }
 
   return (
     <div className={style.main}>
-      <input type="text" placeholder="Search" onChange={handleChange} value={inputedData} />
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={handleChange}
+        value={inputedData} />
     </div>
   )
 }

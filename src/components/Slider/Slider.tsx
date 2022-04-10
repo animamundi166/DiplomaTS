@@ -1,5 +1,4 @@
-import { Tooltip, Typography } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Tooltip } from '@mui/material';
 import Slider from '@mui/material/Slider';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -59,6 +58,7 @@ const RangeSlider = () => {
                 min={minMaxData[0]}
                 max={minMaxData[1]}
                 track={false}
+                size="small"
                 valueLabelFormat={valueLabelFormat}
                 components={{
                     ValueLabel: ValueLabelComponent,

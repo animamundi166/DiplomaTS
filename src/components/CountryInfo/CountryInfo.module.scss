@@ -4,7 +4,7 @@
     justify-content: center;
     gap: 100px;
     margin-top: 50px;
-    padding: 15px 20px;
+    padding: 15px 250px;
 
     img {
         width: 440px;
@@ -25,29 +25,34 @@
             border-radius: 4px;
             text-decoration: none;
             padding: 2px 15px;
-            margin: 1px 5px;
+            margin: 2px 5px;
         }
 
         .info {
             margin-top: 20px;
 
+            p {
+                margin: 8px 0px;
+
+                span {
+                    margin-right: 5px;
+                    font-weight: bold;
+                }
+            }
+
             .penum {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
+                margin: 2px 0;
+
+                p {
+                    margin: 0;
+                }
 
                 .enum {
                     display: flex;
                     align-items: center;
                     flex-wrap: wrap;
-                    row-gap: 6px;
-                }
-            }
-
-            p {
-                margin: 8px 0px;
-
-                span {
-                    font-weight: bold;
                 }
             }
         }
@@ -63,7 +68,6 @@
         .border {
             display: grid;
             grid-template-columns: repeat(4, 100px);
-            gap: 8px 8px;
         }
     }
 }
@@ -72,7 +76,7 @@
     .main {
         gap: 50px;
         margin-top: 35px;
-        padding: 30px 30px;
+        padding: 30px 230px;
 
         img {
             width: 350px;
@@ -98,10 +102,6 @@
                     margin: 6px 0;
                 }
             }
-
-            .border {
-                gap: 7px 5px;
-            }
         }
     }
 }
@@ -109,7 +109,7 @@
 @media(min-width: 768px) and (max-width: 1024px) {
     .main {
         gap: 40px;
-        padding: 30px 30px;
+        padding: 30px 200px;
 
         img {
             width: 300px;
@@ -138,7 +138,6 @@
 
             .border {
                 grid-template-columns: repeat(3, 100px);
-                gap: 5px 3px;
             }
         }
     }
@@ -152,7 +151,7 @@
         justify-content: center;
         gap: 30px;
         margin-top: 10px;
-        padding: 15px 20px;
+        padding: 20px 170px;
 
         img {
             width: 320px;
@@ -163,7 +162,7 @@
                 font-size: 12px;
                 font-weight: 300;
                 padding: 2px 15px;
-                margin: 0 5px;
+                margin: 2px 5px;
             }
 
             h1 {
@@ -177,18 +176,21 @@
                     margin: 6px 0px;
                     font-size: 14px;
                 }
-            }
 
-            .borders {
-                p {
-                    font-size: 14px;
-                    margin: 6px 0;
+                .penum {
+                    margin: 4px 0;
                 }
-            }
 
-            .border {
-                grid-template-columns: repeat(3, 100px);
-                grid-gap: 7px 5px;
+                .borders {
+                    p {
+                        font-size: 14px;
+                        margin: 6px 0;
+                    }
+                }
+
+                .border {
+                    grid-template-columns: repeat(3, 100px);
+                }
             }
         }
     }
@@ -213,7 +215,7 @@
                 font-size: 12px;
                 font-weight: 300;
                 padding: 2px 15px;
-                margin: 0 5px;
+                margin: 1px 5px;
             }
 
             h1 {
@@ -237,7 +239,6 @@
             }
 
             .border {
-                grid-gap: 7px 5px;
                 grid-template-columns: repeat(2, 100px);
             }
         }

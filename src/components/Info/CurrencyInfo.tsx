@@ -11,9 +11,9 @@ import { LinearProgress } from '@mui/material';
 import NoData from '../NotFound/NoData';
 import { inputData, setFilter } from '../../store/filterSlice';
 import { cc } from '../../util/constants';
-import NotFound from '../NotFound/NotFound';
 import { filteredPopulationRange, setFilteredPopul, setMinMaxPopulationValues } from '../../store/populationSlice';
 import { INewObj } from './LanguageInfo';
+import { setDescription } from '../../store/descriptionSlice';
 
 
 const CurrencyInfo: FC = () => {
@@ -33,6 +33,10 @@ const CurrencyInfo: FC = () => {
     dispatch(setFilteredPopul([0, 2e9]));
     dispatch(setMinMaxPopulationValues(findMinMaxPopulationValues()));
     dispatch(setFilter(''));
+    dispatch(setDescription(`with ${currencyFullName} currency`));
+    return () => {
+      dispatch(setDescription(''));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currencyInfo]);
 
@@ -56,15 +60,19 @@ const CurrencyInfo: FC = () => {
     return ([0, maxPopul])
   }
 
-  const currencyFullName = cc.code(curr).currency;
+  let currencyFullName: string = '';
+  try {
+    currencyFullName = cc.code(curr).currency;
+  } catch (error) {
+    console.log((error as Error).message);
+  }
 
   return (
     <>
       {isLoading && <LinearProgress />}
       {isWarning && <NoData />}
-      {!currencyInfo && <NotFound />}
       <main className={style.main}>
-        < MapSwitcher name={currencyFullName} />
+        {isWarning || < MapSwitcher />}
         {!isChart && <div className={style.countries}>
           {currencyInfo
             .filter((item) => item.name.common.toLowerCase().includes(inputedData.toLowerCase()))

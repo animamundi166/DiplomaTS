@@ -16,7 +16,6 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/react-simple-maps": "^1.0.8",
-    "antd": "^4.19.5",
     "axios": "^0.26.1",
     "currency-codes": "^2.1.0",
     "iso-639-2-english": "^1.2.0",

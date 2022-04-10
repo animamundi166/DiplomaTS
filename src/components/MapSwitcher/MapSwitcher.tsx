@@ -8,11 +8,8 @@ import RangeSlider from '../Slider/Slider';
 import style from './MapSwitcher.module.scss';
 import SearchIcon from '@mui/icons-material/Search';
 
-interface INameProps {
-  name: string | undefined,
-}
 
-const MapSwitcher: FC<INameProps> = ({ name }) => {
+const MapSwitcher: FC = () => {
 
   const { activeClass } = useSelector((store: RootState) => store.tabState);
   const dispatch = useDispatch();
@@ -37,7 +34,7 @@ const MapSwitcher: FC<INameProps> = ({ name }) => {
       <div className={style.switch}>
         <div>
           <span className={activeClass === 1 ? style.active : style.span} onClick={setChartTrue}>
-            List Of Countries ({name})
+            List Of Countries
           </span>
           <span className={activeClass === 2 ? style.active : style.span} onClick={setChartFalse}>
             Map

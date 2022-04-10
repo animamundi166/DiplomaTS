@@ -13,7 +13,7 @@ import NotFound from '../NotFound/NotFound';
 import { inputData, setFilter } from '../../store/filterSlice';
 import { livingISO6392 } from '../../util/constants';
 import { filteredPopulationRange, setFilteredPopul, setMinMaxPopulationValues } from '../../store/populationSlice';
-
+import { setDescription } from '../../store/descriptionSlice';
 
 export interface INewObj {
   [key: string]: string | number;
@@ -27,8 +27,6 @@ const LanguageInfo: FC = () => {
   const inputedData = useSelector(inputData);
   const filteredPopulData = useSelector(filteredPopulationRange);
 
-  console.log('filteredPopulData', filteredPopulData);
-
   useEffect(() => {
     dispatch(getDataLanguageInfo(langCode!));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,6 +36,10 @@ const LanguageInfo: FC = () => {
     dispatch(setFilteredPopul([0, 2e9]));
     dispatch(setMinMaxPopulationValues(findMinMaxPopulationValues()));
     dispatch(setFilter(''));
+    dispatch(setDescription(`with ${LanguageFullName} language`));
+    return () => {
+      dispatch(setDescription(''));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [languageInfo]);
 
@@ -70,7 +72,7 @@ const LanguageInfo: FC = () => {
       {isWarning && <NoData />}
       {!languageInfo && <NotFound />}
       <div className={style.main}>
-        <MapSwitcher name={LanguageFullName} />
+        {isWarning || < MapSwitcher />}
         {!isChart && <div className={style.countries}>
           {languageInfo
             .filter((item) => item.name.toLowerCase().includes(inputedData.toLowerCase().trim()))

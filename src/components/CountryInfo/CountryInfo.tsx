@@ -21,7 +21,6 @@ const CountryInfo: FC = () => {
     <>
       {isLoading && <LinearProgress />}
       {isWarning && <NoData />}
-
       {countryInfo && (
 
         <main className={style.main}>
@@ -37,10 +36,12 @@ const CountryInfo: FC = () => {
               {countryInfo.capital ? (<p><span>Capital: </span>{countryInfo.capital}</p>) : (<p><span>Capital: </span>-</p>)}
 
               {countryInfo.currencies &&
-                <p><span>Currencies: </span>
-                  {countryInfo.currencies.map((item, index) =>
-                    <Link to={`/currencies/${item.code}`} key={index}>{item.name}</Link>)}
-                </p>}
+                <div className={style.penum}>
+                  <p><span>Currencies: </span></p>
+                  <span className={style.enum}>
+                    {countryInfo.currencies.map((item, index) =>
+                      <Link to={`/currencies/${item.code}`} key={index}>{item.name}</Link>)}</span>
+                </div>}
 
               {countryInfo.languages &&
                 <div className={style.penum}>
@@ -48,16 +49,13 @@ const CountryInfo: FC = () => {
                   <span className={style.enum}>
                     {countryInfo.languages.map((item, index) =>
                       <Link to={`/languages/${item.iso639_2}`} key={index}>{item.name}</Link>)}</span>
-
                 </div>}
-
             </div>
 
             {!countryInfo.borders
               ? (
                 <div className={style.borders}>
-                  <span><b>Border Countries: </b></span>
-                  <span>There is no border countries</span>
+                  <span><b>Border Countries: </b></span>&mdash;
                 </div>
               )
               : (
