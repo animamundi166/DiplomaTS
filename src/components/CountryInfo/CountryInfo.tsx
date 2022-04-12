@@ -1,10 +1,10 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { LinearProgress } from '@mui/material';
 import { getDataCountryInfo } from '../../store/countriesData';
 import { RootState } from '../../store/store';
 import style from './CountryInfo.module.scss';
-import { LinearProgress } from '@mui/material';
 import NoData from '../NotFound/NoData';
 
 const CountryInfo: FC = () => {
@@ -14,7 +14,6 @@ const CountryInfo: FC = () => {
 
   useEffect(() => {
     dispatch(getDataCountryInfo(countryCode!));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countryCode]);
 
   return (
@@ -28,51 +27,86 @@ const CountryInfo: FC = () => {
           <div className={style.data}>
             <h1>{countryInfo.name}</h1>
             <div className={style.info}>
-              <p><span>Native Name: </span>{countryInfo.nativeName}</p>
-              <p><span>Region: </span>{countryInfo.region}</p>
-              <p><span>Subregion: </span>{countryInfo.subregion}</p>
-              <p><span>Population: </span>{(countryInfo.population).toLocaleString()}</p>
-              {countryInfo.area && <p><span>Area: </span>{(countryInfo.area).toLocaleString()}</p>}
-              {countryInfo.capital ? (<p><span>Capital: </span>{countryInfo.capital}</p>) : (<p><span>Capital: </span>-</p>)}
+              <p>
+                <span>Native Name: </span>
+                {countryInfo.nativeName}
+              </p>
+              <p>
+                <span>Region: </span>
+                {countryInfo.region}
+              </p>
+              <p>
+                <span>Subregion: </span>
+                {countryInfo.subregion}
+              </p>
+              <p>
+                <span>Population: </span>
+                {(countryInfo.population).toLocaleString()}
+              </p>
+              {countryInfo.area && (
+                <p>
+                  <span>Area: </span>
+                  {(countryInfo.area).toLocaleString()}
+                </p>
+              )}
+              {countryInfo.capital ? (
+                <p>
+                  <span>Capital: </span>
+                  {countryInfo.capital}
+                </p>
+              )
+                : (
+                  <p>
+                    <span>Capital: </span>
+                    -
+                  </p>
+                )}
 
-              {countryInfo.currencies &&
+              {countryInfo.currencies && (
                 <div className={style.penum}>
-                  <p><span>Currencies: </span></p>
+                  <p>
+                    <span>Currencies: </span>
+                  </p>
                   <span className={style.enum}>
-                    {countryInfo.currencies.map((item, index) =>
-                      <Link to={`/currencies/${item.code}`} key={index}>{item.name}</Link>)}</span>
-                </div>}
+                    {countryInfo.currencies.map((item, index) => <Link to={`/currencies/${item.code}`} key={index}>{item.name}</Link>)}
+                  </span>
+                </div>
+              )}
 
-              {countryInfo.languages &&
+              {countryInfo.languages && (
                 <div className={style.penum}>
-                  <p><span>Languages: </span></p>
+                  <p>
+                    <span>Languages: </span>
+                  </p>
                   <span className={style.enum}>
-                    {countryInfo.languages.map((item, index) =>
-                      <Link to={`/languages/${item.iso639_2}`} key={index}>{item.name}</Link>)}</span>
-                </div>}
+                    {countryInfo.languages.map((item, index) => <Link to={`/languages/${item.iso639_2}`} key={index}>{item.name}</Link>)}
+                  </span>
+                </div>
+              )}
             </div>
 
             {!countryInfo.borders
               ? (
                 <div className={style.borders}>
-                  <span><b>Border Countries: </b></span>&mdash;
+                  <span>
+                    <b>Border Countries: </b>
+                  </span>
+                  &mdash;
                 </div>
               )
               : (
                 <div className={style.borders}>
                   <p>Border Countries: </p>
                   <div className={style.border}>
-                    {countryInfo.borders.map((item, index) =>
-                      <Link to={`/country/${item}`} key={index}>{item}</Link>)}
+                    {countryInfo.borders.map((item, index) => <Link to={`/country/${item}`} key={index}>{item}</Link>)}
                   </div>
                 </div>
-              )
-            }
+              )}
           </div>
         </main>
       )}
     </>
-  )
-}
+  );
+};
 
 export default CountryInfo;

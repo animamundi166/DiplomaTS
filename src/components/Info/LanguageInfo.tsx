@@ -29,7 +29,6 @@ const LanguageInfo: FC = () => {
 
   useEffect(() => {
     dispatch(getDataLanguageInfo(langCode!));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [langCode]);
 
   useEffect(() => {
@@ -40,7 +39,6 @@ const LanguageInfo: FC = () => {
     return () => {
       dispatch(setDescription(''));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [languageInfo]);
 
 

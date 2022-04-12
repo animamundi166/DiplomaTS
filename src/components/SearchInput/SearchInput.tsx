@@ -1,6 +1,6 @@
-import { ChangeEvent, FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { inputData, setFilter } from "../../store/filterSlice";
+import { ChangeEvent, FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { inputData, setFilter } from '../../store/filterSlice';
 import style from './SearchInput.module.scss';
 
 const SearchInput: FC = () => {

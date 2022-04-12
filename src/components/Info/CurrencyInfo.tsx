@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import style from './Info.module.scss';
 import CountryItem from '../CountryItem/CountryItem';
@@ -15,7 +15,6 @@ import { filteredPopulationRange, setFilteredPopul, setMinMaxPopulationValues } 
 import { INewObj } from './LanguageInfo';
 import { setDescription } from '../../store/descriptionSlice';
 
-
 const CurrencyInfo: FC = () => {
   const { curr } = useParams();
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ const CurrencyInfo: FC = () => {
 
   useEffect(() => {
     dispatch(getDataCurrencyInfo(curr!));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [curr]);
 
   useEffect(() => {
@@ -37,7 +35,6 @@ const CurrencyInfo: FC = () => {
     return () => {
       dispatch(setDescription(''));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currencyInfo]);
 
   const getArrayForChart = (): INewObj[] => {

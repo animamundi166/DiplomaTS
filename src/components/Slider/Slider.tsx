@@ -15,11 +15,8 @@ const RangeSlider = () => {
     const minMaxData = useSelector(minMaxPopulationValues);
     const filteredPopulData = useSelector(filteredPopulationRange);
 
-    console.log('filteredPopulData', filteredPopulData);
-
     useEffect(() => {
         dispatch(setFilteredPopul(filteredPopulData));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filteredPopulData])
 
     const handleChange = (event: Event, newValue: number | number[]) => {

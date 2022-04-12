@@ -58,6 +58,10 @@
         }
 
         .borders {
+            span {
+                font-size: 14px;
+            }
+
             p {
                 font-size: 16px;
                 font-weight: bold;
@@ -97,6 +101,10 @@
             }
 
             .borders {
+                span {
+                    font-size: 14px;
+                }
+
                 p {
                     font-size: 14px;
                     margin: 6px 0;
@@ -130,6 +138,10 @@
             }
 
             .borders {
+                span {
+                    font-size: 14px;
+                }
+
                 p {
                     margin: 6px 0;
                     font-size: 14px;
@@ -182,6 +194,10 @@
                 }
 
                 .borders {
+                    span {
+                        font-size: 14px;
+                    }
+
                     p {
                         font-size: 14px;
                         margin: 6px 0;
@@ -196,7 +212,7 @@
     }
 }
 
-@media(min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
     .main {
         display: flex;
         flex-direction: column;
@@ -232,6 +248,10 @@
             }
 
             .borders {
+                span {
+                    font-size: 14px;
+                }
+
                 p {
                     font-size: 14px;
                     margin: 6px 0;
