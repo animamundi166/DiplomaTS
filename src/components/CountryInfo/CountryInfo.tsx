@@ -68,7 +68,7 @@ const CountryInfo: FC = () => {
                     <span>Currencies: </span>
                   </p>
                   <span className={style.enum}>
-                    {countryInfo.currencies.map((item, index) => <Link to={`/currencies/${item.code}`} key={index}>{item.name}</Link>)}
+                    {countryInfo.currencies.map((item) => <Link to={`/currencies/${item.code}`} key={item.code}>{item.name}</Link>)}
                   </span>
                 </div>
               )}
@@ -79,7 +79,7 @@ const CountryInfo: FC = () => {
                     <span>Languages: </span>
                   </p>
                   <span className={style.enum}>
-                    {countryInfo.languages.map((item, index) => <Link to={`/languages/${item.iso639_2}`} key={index}>{item.name}</Link>)}
+                    {countryInfo.languages.map((item) => <Link to={`/languages/${item.iso639_2}`} key={item.iso639_2}>{item.name}</Link>)}
                   </span>
                 </div>
               )}

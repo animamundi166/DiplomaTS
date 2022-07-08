@@ -42,7 +42,7 @@ const CurrencyInfo: FC = () => {
     const newObj: INewObj[] = [];
     arr.forEach(element => {
       const x: INewObj = {
-        ISO3: element[0],
+        id: element[0],
         name: element[1],
         population: element[2],
       };

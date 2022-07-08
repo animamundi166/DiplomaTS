@@ -25,11 +25,10 @@ const MapChartFilled: FC<IDataProps> = ({ data }) => {
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => {
-              const { ISO_A3 } = geo.properties;
               const filledCountries = data
                 .filter((item) => item.name.toString().toLowerCase().includes(inputedData.toLowerCase().trim()))
                 .filter((item) => item.population >= filteredPopulData[0] && item.population <= filteredPopulData[1])
-                .find(item => item.ISO3 === ISO_A3);
+                .find(item => item.id === geo.id);
               return (
                 <Geography
                   key={geo.rsmKey}

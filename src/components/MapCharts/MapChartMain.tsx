@@ -21,19 +21,18 @@ const MapChartMain: FC = () => {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => {
-                const { NAME, ISO_A2 } = geo.properties;
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
                     onMouseEnter={() => {
-                      setContent(NAME);
+                      setContent(`${geo.properties.name}`);
                     }}
                     onMouseLeave={() => {
                       setContent('');
                     }}
                     onClick={() => {
-                      navigate(`/country/${ISO_A2}`);
+                      navigate(`/country/${geo.id}`);
                     }}
                     style={{
                       default: {
